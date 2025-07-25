@@ -1,0 +1,24 @@
+SOURCE CODE 
+
+from cryptography.fernet import Fernet
+import base64
+
+# Generate and store the key securely
+def generate_key():
+    return base64.urlsafe_b64encode(Fernet.generate_key())
+
+# Encrypt payload
+def encrypt_payload(payload, key):
+    cipher = Fernet(key)
+    return cipher.encrypt(payload.encode())
+
+# Decrypt and execute payload
+def execute_encrypted_payload(encrypted_payload, key):
+    cipher = Fernet(key)
+    decrypted_payload = cipher.decrypt(encrypted_payload).decode()
+    exec(decrypted_payload)  # Execute payload dynamically
+
+# Example usage
+key = generate_key()
+encrypted = encrypt_payload("print('Executing hidden payload...')", key)
+execute_encrypted_payload(encrypted, key)
