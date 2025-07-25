@@ -61,3 +61,9 @@ Traditional defenses often fail to detect **autonomous malware-driven attacks**,
 **
 ## Presentation
 You can download the full presentation: [review2.pptx](review2.pptx)**
+
+
+
+
+
+<img width="3236" height="2589" alt="Image" src="https://github.com/user-attachments/assets/10ec61fe-f328-4b00-b62c-ffda1ebcdbbb" />
