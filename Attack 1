@@ -1,0 +1,26 @@
+**#source code** 
+
+import usb_hid
+from adafruit_hid.keyboard import Keyboard
+from adafruit_hid.consumer_control import ConsumerControl
+from adafruit_hid.consumer_control_code import ConsumerControlCode
+from adafruit_hid.keycode import Keycode
+
+kbd = Keyboard(usb_hid.devices)
+consumerControl = ConsumerControl(usb_hid.devices)
+
+def runScriptLine(line):
+    keys = convertLine(line)
+    for k in keys:
+        if k > 1000:
+            consumerControl.press(int(k-1000))
+        else:
+            kbd.press(k)
+    for k in reversed(keys):
+        if k > 1000:
+            consumerControl.release()
+        else:
+            kbd.release(k)
+
+def sendString(line):
+    layout.write(line)
